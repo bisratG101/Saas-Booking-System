@@ -1,10 +1,11 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import request from "supertest";
 import { app } from "./app";
+import * as dbModule from "./db";
 
 describe("Backend Foundation & App Suite", () => {
   describe("GET /health", () => {
-    it("should respond with HTTP 200 and health status payload", async () => {
+    it("should respond with HTTP 200 and unconfigured status when DATABASE_URL is not set", async () => {
       const response = await request(app).get("/health");
 
       expect(response.status).toBe(200);
@@ -13,7 +14,45 @@ describe("Backend Foundation & App Suite", () => {
       expect(response.body).toHaveProperty("environment");
       expect(response.body).toHaveProperty("timestamp");
       expect(response.body).toHaveProperty("uptime");
-      expect(typeof response.body.uptime).toBe("number");
+      expect(response.body.database).toEqual({ status: "unconfigured" });
+    });
+
+    it("should respond with HTTP 200 and connected status when database is reachable", async () => {
+      const spy = vi.spyOn(dbModule, "checkDatabaseHealth").mockResolvedValueOnce({
+        isConfigured: true,
+        isHealthy: true,
+        latencyMs: 12,
+      });
+
+      const response = await request(app).get("/health");
+
+      expect(response.status).toBe(200);
+      expect(response.body.status).toBe("ok");
+      expect(response.body.database).toEqual({
+        status: "connected",
+        latencyMs: 12,
+      });
+
+      spy.mockRestore();
+    });
+
+    it("should respond with HTTP 503 and safe degraded status when database is unreachable", async () => {
+      const spy = vi.spyOn(dbModule, "checkDatabaseHealth").mockResolvedValueOnce({
+        isConfigured: true,
+        isHealthy: false,
+        error: "Database connection failed",
+      });
+
+      const response = await request(app).get("/health");
+
+      expect(response.status).toBe(503);
+      expect(response.body.status).toBe("degraded");
+      expect(response.body.database).toEqual({
+        status: "disconnected",
+        error: "Database unreachable",
+      });
+
+      spy.mockRestore();
     });
   });
 

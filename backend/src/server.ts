@@ -1,5 +1,6 @@
 import { app } from "./app";
 import { env } from "./config/env";
+import { closePool } from "./db";
 
 /**
  * HTTP Server Entry Point
@@ -16,12 +17,18 @@ const server = app.listen(env.PORT, () => {
 function gracefulShutdown(signal: string) {
   console.log(`\n🛑 Received ${signal}. Starting graceful shutdown...`);
 
-  server.close((err) => {
+  server.close(async (err) => {
     if (err) {
       console.error("❌ Error during server close:", err);
       process.exit(1);
     }
-    console.log("✅ HTTP server closed. Process exiting cleanly.");
+    console.log("✅ HTTP server closed.");
+    try {
+      await closePool();
+      console.log("✅ Database pool closed cleanly.");
+    } catch (poolErr) {
+      console.error("❌ Error closing database pool:", poolErr);
+    }
     process.exit(0);
   });
 

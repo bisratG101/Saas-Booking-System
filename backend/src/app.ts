@@ -3,6 +3,7 @@ import cors from "cors";
 import { env } from "./config/env";
 import { notFoundHandler } from "./middleware/notFoundHandler";
 import { errorHandler } from "./middleware/errorHandler";
+import { checkDatabaseHealth } from "./db";
 
 /**
  * Express Application Factory
@@ -36,12 +37,27 @@ export function createApp(): Application {
 
   // 3. Health Check Endpoint
   // Used by deployment monitors (like Render or Vercel) and uptime checkers
-  app.get("/health", (_req, res) => {
-    res.status(200).json({
-      status: "ok",
+  app.get("/health", async (_req, res) => {
+    const dbHealth = await checkDatabaseHealth();
+
+    const isHealthy = !dbHealth.isConfigured || dbHealth.isHealthy;
+    const statusCode = isHealthy ? 200 : 503;
+
+    let dbStatus: "unconfigured" | "connected" | "disconnected" = "unconfigured";
+    if (dbHealth.isConfigured) {
+      dbStatus = dbHealth.isHealthy ? "connected" : "disconnected";
+    }
+
+    res.status(statusCode).json({
+      status: isHealthy ? "ok" : "degraded",
       environment: env.NODE_ENV,
       timestamp: new Date().toISOString(),
       uptime: process.uptime(),
+      database: {
+        status: dbStatus,
+        ...(dbHealth.latencyMs !== undefined ? { latencyMs: dbHealth.latencyMs } : {}),
+        ...(dbStatus === "disconnected" ? { error: "Database unreachable" } : {}),
+      },
     });
   });
 
