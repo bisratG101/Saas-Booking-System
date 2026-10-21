@@ -7,7 +7,6 @@ import {
   Store,
   ShieldCheck,
   Clock,
-  Sparkles,
   ArrowRight,
 } from "lucide-react";
 
@@ -19,11 +18,6 @@ export function HomePage() {
       {/* Hero Section */}
       <div className="bg-white rounded-2xl border border-[#E7E7E4] p-8 sm:p-12 shadow-[0_1px_3px_rgba(0,0,0,0.02)] relative overflow-hidden">
         <div className="max-w-2xl relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#EFEEEB] text-[#18181B] text-xs font-semibold rounded-full border border-[#E7E7E4] mb-4">
-            <Sparkles className="h-3.5 w-3.5 text-amber-500" />
-            <span>Goom Booking System & Scheduling Engine</span>
-          </div>
-
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#18181B] leading-tight">
             Appointment management for modern service providers.
           </h1>
