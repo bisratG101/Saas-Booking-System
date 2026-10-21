@@ -71,6 +71,12 @@ export function createApp(): Application {
   app.use("/api/v1/bookings", bookingRoutes);
   app.use("/api/v1/admin", adminRoutes);
 
+  // Fallback aliases for clients configuring base domain without /api/v1
+  app.use("/auth", authRoutes);
+  app.use("/businesses", businessRoutes);
+  app.use("/bookings", bookingRoutes);
+  app.use("/admin", adminRoutes);
+
   // 5. 404 Not Found Middleware (must be after all valid routes)
   app.use(notFoundHandler);
 
