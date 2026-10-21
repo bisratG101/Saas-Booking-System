@@ -33,6 +33,22 @@ export function errorHandler(
     return;
   }
 
+  // Handle Body-Parser / Express malformed JSON SyntaxErrors
+  if (
+    err instanceof SyntaxError &&
+    "status" in err &&
+    (err as any).status === 400 &&
+    "body" in err
+  ) {
+    res.status(400).json({
+      error: {
+        code: "INVALID_JSON",
+        message: "Malformed JSON payload in request body",
+      },
+    });
+    return;
+  }
+
   // Handle standard JavaScript / Node errors
   if (err instanceof Error) {
     const isProduction = env.NODE_ENV === "production";

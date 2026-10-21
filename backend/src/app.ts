@@ -4,6 +4,10 @@ import { env } from "./config/env";
 import { notFoundHandler } from "./middleware/notFoundHandler";
 import { errorHandler } from "./middleware/errorHandler";
 import { checkDatabaseHealth } from "./db";
+import { authRoutes } from "./modules/auth/authRoutes";
+import { businessRoutes } from "./modules/businesses/businessRoutes";
+import { bookingRoutes } from "./modules/bookings/bookingRoutes";
+import { adminRoutes } from "./modules/admin/adminRoutes";
 
 /**
  * Express Application Factory
@@ -61,10 +65,16 @@ export function createApp(): Application {
     });
   });
 
-  // 4. 404 Not Found Middleware (must be after all valid routes)
+  // 4. API Domain Routes
+  app.use("/api/v1/auth", authRoutes);
+  app.use("/api/v1/businesses", businessRoutes);
+  app.use("/api/v1/bookings", bookingRoutes);
+  app.use("/api/v1/admin", adminRoutes);
+
+  // 5. 404 Not Found Middleware (must be after all valid routes)
   app.use(notFoundHandler);
 
-  // 5. Central Error Handler (must be last middleware in the pipeline)
+  // 6. Central Error Handler (must be last middleware in the pipeline)
   app.use(errorHandler);
 
   return app;

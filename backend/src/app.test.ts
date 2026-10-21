@@ -6,6 +6,11 @@ import * as dbModule from "./db";
 describe("Backend Foundation & App Suite", () => {
   describe("GET /health", () => {
     it("should respond with HTTP 200 and unconfigured status when DATABASE_URL is not set", async () => {
+      const spy = vi.spyOn(dbModule, "checkDatabaseHealth").mockResolvedValueOnce({
+        isConfigured: false,
+        isHealthy: false,
+      });
+
       const response = await request(app).get("/health");
 
       expect(response.status).toBe(200);
@@ -15,6 +20,8 @@ describe("Backend Foundation & App Suite", () => {
       expect(response.body).toHaveProperty("timestamp");
       expect(response.body).toHaveProperty("uptime");
       expect(response.body.database).toEqual({ status: "unconfigured" });
+
+      spy.mockRestore();
     });
 
     it("should respond with HTTP 200 and connected status when database is reachable", async () => {
@@ -86,12 +93,20 @@ describe("Backend Foundation & App Suite", () => {
 
   describe("CORS Handling", () => {
     it("should permit requests from the configured frontend origin", async () => {
+      const spy = vi.spyOn(dbModule, "checkDatabaseHealth").mockResolvedValueOnce({
+        isConfigured: true,
+        isHealthy: true,
+        latencyMs: 5,
+      });
+
       const response = await request(app)
         .get("/health")
         .set("Origin", "http://localhost:5173");
 
       expect(response.status).toBe(200);
       expect(response.headers["access-control-allow-origin"]).toBe("http://localhost:5173");
+
+      spy.mockRestore();
     });
 
     it("should reject requests from an unauthorized origin", async () => {
