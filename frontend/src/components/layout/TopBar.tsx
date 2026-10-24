@@ -155,7 +155,7 @@ export function TopBar({ onToggleSidebar }: TopBarProps) {
               aria-label="Notifications"
             >
               <Bell className="h-4 w-4" />
-              <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-[#2563EB]" />
+              <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-[#285943]" />
             </button>
 
             {/* Notifications Popover */}
@@ -316,7 +316,7 @@ export function TopBar({ onToggleSidebar }: TopBarProps) {
                   </button>
                   <button
                     type="submit"
-                    className="px-3.5 py-1.5 text-xs bg-[#111111] text-white rounded-lg hover:bg-[#27272A] font-medium"
+                    className="px-3.5 py-1.5 text-xs bg-[#285943] text-white rounded-lg hover:bg-[#1E4332] font-medium transition-colors"
                   >
                     Submit
                   </button>

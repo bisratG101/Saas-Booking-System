@@ -171,7 +171,7 @@ export function OwnerBookingsPage() {
           onClick={() => setStatusFilter("all")}
           className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${
             statusFilter === "all"
-              ? "bg-[#111111] text-white shadow-xs"
+              ? "bg-[#285943] text-white shadow-xs"
               : "text-[#6B6B6B] hover:text-[#18181B] hover:bg-[#EFEEEB]"
           }`}
         >
@@ -181,7 +181,7 @@ export function OwnerBookingsPage() {
           onClick={() => setStatusFilter("confirmed")}
           className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${
             statusFilter === "confirmed"
-              ? "bg-[#111111] text-white shadow-xs"
+              ? "bg-[#285943] text-white shadow-xs"
               : "text-[#6B6B6B] hover:text-[#18181B] hover:bg-[#EFEEEB]"
           }`}
         >
@@ -191,7 +191,7 @@ export function OwnerBookingsPage() {
           onClick={() => setStatusFilter("cancelled")}
           className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${
             statusFilter === "cancelled"
-              ? "bg-[#111111] text-white shadow-xs"
+              ? "bg-[#285943] text-white shadow-xs"
               : "text-[#6B6B6B] hover:text-[#18181B] hover:bg-[#EFEEEB]"
           }`}
         >

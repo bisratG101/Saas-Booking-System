@@ -34,11 +34,11 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     onClose();
   }
 
-  // Active / inactive navlink styling matching design spec
+  // Active / inactive navlink styling: subtle neutral background with a slim Goom green accent indicator
   const getNavClass = ({ isActive }: { isActive: boolean }) =>
-    `flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors select-none ${
+    `flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all select-none relative ${
       isActive
-        ? "bg-[#EFEEEB] text-[#18181B] font-semibold"
+        ? "bg-[#EFEEEB] text-[#18181B] font-semibold before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:rounded-r-full before:bg-[#285943] dark:before:bg-[#3D8663]"
         : "text-[#6B6B6B] hover:text-[#18181B] hover:bg-[#F4F4F5]"
     }`;
 
@@ -75,7 +75,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
             className="flex items-center gap-2.5 group"
           >
             {/* Goom Brand Mark */}
-            <div className="h-8 w-8 rounded-lg bg-[#111111] text-white flex items-center justify-center font-bold text-sm tracking-tight shadow-xs group-hover:bg-[#27272A] transition-colors">
+            <div className="h-8 w-8 rounded-lg bg-[#285943] text-white flex items-center justify-center font-bold text-sm tracking-tight shadow-xs group-hover:bg-[#1E4332] transition-colors">
               G
             </div>
             <div>

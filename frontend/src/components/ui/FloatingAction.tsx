@@ -13,7 +13,7 @@ export function FloatingAction() {
         <div className="mb-3 w-72 rounded-xl bg-white border border-[#E7E7E4] p-4 shadow-xl text-left animate-in fade-in slide-in-from-bottom-2 duration-150">
           <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4]">
             <div className="flex items-center gap-2">
-              <div className="h-6 w-6 rounded-full bg-[#111111] text-white flex items-center justify-center">
+              <div className="h-6 w-6 rounded-full bg-[#285943] text-white flex items-center justify-center">
                 <Sparkles className="h-3.5 w-3.5" />
               </div>
               <span className="text-xs font-semibold text-[#18181B]">
@@ -84,11 +84,11 @@ export function FloatingAction() {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 bg-[#111111] text-white px-3.5 py-2.5 rounded-full shadow-lg hover:bg-[#27272A] active:scale-95 transition-all text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-[#111111] focus:ring-offset-2"
+        className="flex items-center gap-2 bg-[#285943] text-white px-3.5 py-2.5 rounded-full shadow-lg hover:bg-[#1E4332] active:scale-95 transition-all text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-[#285943] focus:ring-offset-2"
         aria-label="Toggle Goom quick actions"
         aria-expanded={isOpen}
       >
-        <Sparkles className="h-4 w-4 text-amber-300" />
+        <Sparkles className="h-4 w-4 text-emerald-200" />
         <span>Quick Action</span>
       </button>
     </div>

@@ -11,6 +11,12 @@
   --accent-blue: #2563EB;
   --accent-blue-light: #E8F0FE;
   --btn-primary: #111111;
+  /* Goom brand green tokens */
+  --goom-green: #285943;
+  --goom-green-hover: #1E4332;
+  --goom-green-active: #173427;
+  --goom-green-subtle: #EAF1ED;
+  --goom-green-border: #BCD0C6;
   --success: #16A34A;
   --success-bg: #DCFCE7;
   --warning: #D97706;
@@ -29,6 +35,11 @@
   --color-accent-blue: #2563EB;
   --color-accent-blue-light: #E8F0FE;
   --color-btn-dark: #111111;
+  --color-goom-green: #285943;
+  --color-goom-green-hover: #1E4332;
+  --color-goom-green-active: #173427;
+  --color-goom-green-subtle: #EAF1ED;
+  --color-goom-green-border: #BCD0C6;
 }
 
 * {
@@ -62,6 +73,23 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #D4D4D0;
+}
+
+/* =========================================================================
+   GOOM BRAND FOCUS & INTERACTIVE REFINEMENTS
+   ========================================================================= */
+
+/* Subtle keyboard focus indicator in Goom Green */
+:focus-visible {
+  outline-color: var(--goom-green);
+}
+
+.focus\:ring-\[\#111111\]:focus {
+  --tw-ring-color: var(--goom-green) !important;
+}
+
+.focus\:border-\[\#111111\]:focus {
+  border-color: var(--goom-green) !important;
 }
 
 /* =========================================================================
@@ -176,7 +204,7 @@ html.dark textarea {
 html.dark input:focus,
 html.dark select:focus,
 html.dark textarea:focus {
-  border-color: #3b82f6 !important;
+  border-color: #387c5d !important;
   outline: none !important;
 }
 
@@ -241,4 +269,26 @@ html.dark ::-webkit-scrollbar-thumb {
 
 html.dark ::-webkit-scrollbar-thumb:hover {
   background: #3b3d4a;
+}
+
+/* Goom Brand Accents in Dark Mode */
+html.dark .bg-\[\#285943\] {
+  background-color: #2F6B51 !important;
+  color: #ffffff !important;
+}
+
+html.dark .hover\:bg-\[\#1E4332\]:hover {
+  background-color: #245640 !important;
+}
+
+html.dark .border-\[\#285943\] {
+  border-color: #387c5d !important;
+}
+
+html.dark .text-\[\#285943\] {
+  color: #6ee7b7 !important;
+}
+
+html.dark .bg-\[\#EAF1ED\] {
+  background-color: rgba(40, 89, 67, 0.25) !important;
 }

@@ -41,7 +41,7 @@ export function DateBadge({
     <div
       className={`inline-flex flex-col items-center justify-center rounded-lg bg-white border border-[#E7E7E4] shadow-xs select-none text-center ${containerSizes} ${className}`}
     >
-      <span className={`font-semibold tracking-wider text-[#2563EB] leading-none ${monthSizes}`}>
+      <span className={`font-semibold tracking-wider text-[#285943] leading-none ${monthSizes}`}>
         {month}
       </span>
       <span className={`text-[#18181B] leading-tight my-0.5 ${daySizes}`}>

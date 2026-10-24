@@ -317,7 +317,7 @@ export function BusinessDetailsPage() {
             </div>
             <div className="flex justify-between">
               <span className="text-[#6B6B6B]">Date & Slot:</span>
-              <span className="font-mono font-semibold text-[#2563EB]">
+              <span className="font-mono font-semibold text-[#285943]">
                 {selectedDate} ({selectedSlot?.localStartTime} -{" "}
                 {selectedSlot?.localEndTime} {business.timezone})
               </span>
@@ -437,7 +437,7 @@ export function BusinessDetailsPage() {
               Cancel Selection
             </Button>
           }
-          className="border-[#2563EB]/40 shadow-md"
+          className="border-[#285943]/40 shadow-md"
         >
           <div className="space-y-6">
             {bookingError && <Alert type="error" message={bookingError} />}
@@ -449,7 +449,7 @@ export function BusinessDetailsPage() {
                   htmlFor="appointment-date"
                   className="text-xs font-semibold text-[#18181B] flex items-center gap-1.5"
                 >
-                  <CalendarIcon className="h-4 w-4 text-[#2563EB]" />
+                  <CalendarIcon className="h-4 w-4 text-[#285943]" />
                   <span>Choose Appointment Date (30-day window)</span>
                 </label>
                 <span className="text-[11px] font-mono text-[#6B6B6B]">
@@ -464,7 +464,7 @@ export function BusinessDetailsPage() {
                 max={maxDateStr}
                 value={selectedDate}
                 onChange={(e) => handleDateChange(e.target.value)}
-                className="w-full sm:w-64 px-3 py-2 text-sm border border-[#E7E7E4] rounded-lg bg-white text-[#18181B] focus:outline-none focus:ring-2 focus:ring-[#111111]"
+                className="w-full sm:w-64 px-3 py-2 text-sm border border-[#E7E7E4] rounded-lg bg-white text-[#18181B] focus:outline-none focus:ring-2 focus:ring-[#285943]"
               />
             </div>
 
@@ -519,8 +519,8 @@ export function BusinessDetailsPage() {
                         onClick={() => setSelectedSlot(slot)}
                         className={`px-3 py-2.5 rounded-lg border text-xs font-mono font-medium transition-all text-center flex flex-col items-center justify-center select-none ${
                           isPicked
-                            ? "bg-[#111111] text-white border-[#111111] shadow-sm scale-102"
-                            : "bg-white text-[#18181B] border-[#E7E7E4] hover:border-[#111111] hover:bg-[#FAFAF8]"
+                            ? "bg-[#285943] text-white border-[#285943] shadow-sm scale-102"
+                            : "bg-white text-[#18181B] border-[#E7E7E4] hover:border-[#285943] hover:bg-[#FAFAF8]"
                         }`}
                       >
                         <span className="font-bold">

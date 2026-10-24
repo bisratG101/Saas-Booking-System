@@ -20,12 +20,12 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-medium rounded-lg transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed select-none";
+    "inline-flex items-center justify-center font-medium rounded-lg transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[#285943] disabled:opacity-50 disabled:cursor-not-allowed select-none";
 
   const variantStyles = {
-    // Primary is dark charcoal / black per design tokens (#111111)
+    // Primary call-to-action button uses restrained Goom green (#285943)
     primary:
-      "bg-[#111111] text-white hover:bg-[#27272A] active:bg-[#09090B] focus:ring-[#111111] shadow-xs",
+      "bg-[#285943] text-white hover:bg-[#1E4332] active:bg-[#173427] focus:ring-[#285943] shadow-xs",
     secondary:
       "bg-white border border-[#E7E7E4] text-[#18181B] hover:bg-[#F4F4F5] active:bg-[#EFEEEB] focus:ring-[#E7E7E4] shadow-xs",
     outline:

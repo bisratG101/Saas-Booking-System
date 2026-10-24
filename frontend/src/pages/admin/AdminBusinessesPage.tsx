@@ -323,7 +323,7 @@ export function AdminBusinessesPage() {
             onClick={() => handleStatusFilterChange("")}
             className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors ${
               statusFilter === ""
-                ? "bg-[#111111] text-white shadow-xs"
+                ? "bg-[#285943] text-white shadow-xs"
                 : "text-[#6B6B6B] hover:text-[#18181B]"
             }`}
           >
@@ -334,7 +334,7 @@ export function AdminBusinessesPage() {
             onClick={() => handleStatusFilterChange("active")}
             className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors ${
               statusFilter === "active"
-                ? "bg-[#111111] text-white shadow-xs"
+                ? "bg-[#285943] text-white shadow-xs"
                 : "text-[#6B6B6B] hover:text-[#18181B]"
             }`}
           >
@@ -345,7 +345,7 @@ export function AdminBusinessesPage() {
             onClick={() => handleStatusFilterChange("suspended")}
             className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors ${
               statusFilter === "suspended"
-                ? "bg-[#111111] text-white shadow-xs"
+                ? "bg-[#285943] text-white shadow-xs"
                 : "text-[#6B6B6B] hover:text-[#18181B]"
             }`}
           >
